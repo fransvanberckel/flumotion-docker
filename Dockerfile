@@ -11,3 +11,6 @@ RUN set -x \
     && apt-get install -y -q tzdata flumotion flumotion-decklink \
     && apt-get upgrade -y -q \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN set -x \
+    && adduser --home /srv --no-create-home --system --uid 1000 --group app
