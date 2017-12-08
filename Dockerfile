@@ -14,3 +14,5 @@ RUN set -x \
 
 RUN set -x \
     && adduser --home /srv --no-create-home --system --uid 1000 --group app
+
+USER app
