@@ -21,4 +21,5 @@ COPY run_flumotion.sh /run_flumotion.sh
 RUN chmod +x /tini /run_flumotion.sh
 ENTRYPOINT ["/tini", "--", "/run_flumotion.sh"]
 
+WORKDIR /srv
 USER app
