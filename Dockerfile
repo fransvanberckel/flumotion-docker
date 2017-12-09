@@ -13,11 +13,8 @@ RUN set -x \
     && apt-get upgrade -y -q \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY run_flumotion.sh /run_flumotion.sh
-
-ENTRYPOINT /run_flumotion.sh
-
-RUN set -x \
-    && adduser --home /srv --no-create-home --system --uid 1000 --group app
-
+RUN adduser --home /srv --no-create-home --system --uid 1000 --group app
 USER app
+
+COPY run_flumotion.sh /run_flumotion.sh
+ENTRYPOINT ["/run_flumotion.sh"]
