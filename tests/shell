@@ -1,0 +1,9 @@
+#!/bin/bash
+
+BASE_D=$(realpath "${BASH_SOURCE%/*}")
+VOLUMES_D="$BASE_D/volumes/shell"
+
+HOME_D="$VOLUMES_D/home"
+mkdir -p "$HOME_D"
+
+exec sudo docker run --rm -it -v "$HOME_D:/srv" -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY spreadspace/flumotion

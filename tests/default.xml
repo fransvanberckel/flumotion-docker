@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<planet>
+
+  <manager name="planet">
+    <host>0.0.0.0</host>
+    <port>8642</port>
+    <transport>tcp</transport>
+
+    <component name="manager-bouncer" type="htpasswdcrypt-bouncer">
+      <property name="data">
+user:PSfNpHTkpTx1M
+      </property>
+    </component>
+  </manager>
+
+</planet>
