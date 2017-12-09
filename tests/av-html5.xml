@@ -72,8 +72,8 @@ user:PSfNpHTkpTx1M
                project="flumotion"
                version="0.10.1">
       <property name="pattern">0</property>
-      <property name="height">720</property>
-      <property name="width">1280</property>
+      <property name="height">360</property>
+      <property name="width">640</property>
       <property name="framerate">25/1</property>
       <clock-master>false</clock-master>
     </component>
@@ -88,7 +88,7 @@ user:PSfNpHTkpTx1M
         <feed alias="default">producer-video:default</feed>
       </eater>
       <property name="show-text">True</property>
-      <property name="text">spreadspace</property>
+      <property name="text">streaming via TOR onion service</property>
       <clock-master>false</clock-master>
     </component>
 
