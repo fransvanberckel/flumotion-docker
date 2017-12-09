@@ -16,5 +16,8 @@ RUN set -x \
 RUN adduser --home /srv --no-create-home --system --uid 1000 --group app
 USER app
 
+ENV TINI_VERSION v0.16.1
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-static-muslc-amd64 /tini
 COPY run_flumotion.sh /run_flumotion.sh
-ENTRYPOINT ["/run_flumotion.sh"]
+RUN chmod +x /tini /run_flumotion.sh
+ENTRYPOINT ["/tini", "--", "/run_flumotion.sh"]
