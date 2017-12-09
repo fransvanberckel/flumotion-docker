@@ -14,41 +14,41 @@ user:PSfNpHTkpTx1M
   </manager>
 
   <atmosphere>
-    <!-- <component name="http-server-audio-video" -->
-    <!--            type="http-server" -->
-    <!--            label="http-server-audio-video" -->
-    <!--            worker="default" -->
-    <!--            project="flumotion" -->
-    <!--            version="0.10.1"> -->
-    <!--   <property name="mount-point">/webm-audio-video/html5/</property> -->
-    <!--   <property name="hostname">c59a79fe6b39</property> -->
-    <!--   <property name="type">slave</property> -->
-    <!--   <property name="porter-username">vPvfMfnCIsBJ</property> -->
-    <!--   <property name="porter-password">MrNNrtfaFqSd</property> -->
-    <!--   <property name="porter-socket-path">flu-zeJANS.socket</property> -->
-    <!--   <property name="port">8000</property> -->
-    <!--   <plugs> -->
-    <!--     <plug type="component-html5"> -->
-    <!--       <property name="width">320</property> -->
-    <!--       <property name="stream-url">http://172.17.0.1:8000/webm-audio-video/</property> -->
-    <!--       <property name="codecs">vorbis,vp8</property> -->
-    <!--       <property name="mime-type">video/webm</property> -->
-    <!--       <property name="height">240</property> -->
-    <!--     </plug> -->
-    <!--   </plugs> -->
-    <!-- </component> -->
+    <component name="http-server-audio-video"
+               type="http-server"
+               label="http-server-audio-video"
+               worker="default"
+               project="flumotion"
+               version="0.10.1">
+      <property name="mount-point">/webm-audio-video/html5/</property>
+      <property name="hostname">localhost</property>
+      <property name="port">8000</property>
+      <property name="type">slave</property>
+      <property name="porter-username">vPvfMfnCIsBJ</property>
+      <property name="porter-password">MrNNrtfaFqSd</property>
+      <property name="porter-socket-path">flu-zeJANS.socket</property>
+      <plugs>
+        <plug type="component-html5">
+          <property name="width">320</property>
+          <property name="stream-url">http://172.17.0.1:8000/webm-audio-video/</property>
+          <property name="codecs">vorbis,vp8</property>
+          <property name="mime-type">video/webm</property>
+          <property name="height">240</property>
+        </plug>
+      </plugs>
+    </component>
 
-    <!-- <component name="porter-http" -->
-    <!--            type="porter" -->
-    <!--            label="porter-http" -->
-    <!--            worker="default" -->
-    <!--            project="flumotion" -->
-    <!--            version="0.10.1"> -->
-    <!--   <property name="username">vPvfMfnCIsBJ</property> -->
-    <!--   <property name="socket-path">flu-zeJANS.socket</property> -->
-    <!--   <property name="password">MrNNrtfaFqSd</property> -->
-    <!--   <property name="port">8000</property> -->
-    <!-- </component> -->
+    <component name="porter-http"
+               type="porter"
+               label="porter-http"
+               worker="default"
+               project="flumotion"
+               version="0.10.1">
+      <property name="username">vPvfMfnCIsBJ</property>
+      <property name="socket-path">flu-zeJANS.socket</property>
+      <property name="password">MrNNrtfaFqSd</property>
+      <property name="port">8000</property>
+    </component>
 
   </atmosphere>
 
@@ -72,9 +72,9 @@ user:PSfNpHTkpTx1M
                project="flumotion"
                version="0.10.1">
       <property name="pattern">0</property>
-      <property name="height">240</property>
+      <property name="height">720</property>
+      <property name="width">1280</property>
       <property name="framerate">25/1</property>
-      <property name="width">320</property>
       <clock-master>false</clock-master>
     </component>
 
@@ -88,8 +88,7 @@ user:PSfNpHTkpTx1M
         <feed alias="default">producer-video:default</feed>
       </eater>
       <property name="show-text">True</property>
-      <property name="text">Flumotion</property>
-      <property name="fluendo-logo">True</property>
+      <property name="text">spreadspace</property>
       <clock-master>false</clock-master>
     </component>
 
@@ -102,7 +101,7 @@ user:PSfNpHTkpTx1M
       <eater name="default">
         <feed alias="default">producer-audio:default</feed>
       </eater>
-      <property name="bitrate">64000</property>
+      <property name="bitrate">128000</property>
       <clock-master>false</clock-master>
     </component>
 
@@ -116,7 +115,7 @@ user:PSfNpHTkpTx1M
         <feed alias="default">overlay-video:default</feed>
       </eater>
       <property name="keyframe-maxdistance">50</property>
-      <property name="bitrate">400000</property>
+      <property name="bitrate">1200000</property>
       <clock-master>false</clock-master>
     </component>
 
@@ -142,13 +141,15 @@ user:PSfNpHTkpTx1M
       <eater name="default">
         <feed alias="default">muxer-audio-video:default</feed>
       </eater>
-      <property name="burst-on-connect">False</property>
+      <property name="burst-on-connect">True</property>
+      <property name="burst-time">5</property>
       <property name="mount-point">/webm-audio-video/</property>
+      <property name="hostname">localhost</property>
       <property name="port">8000</property>
-      <!-- <property name="type">slave</property> -->
-      <!-- <property name="porter-username">vPvfMfnCIsBJ</property> -->
-      <!-- <property name="porter-socket-path">flu-zeJANS.socket</property> -->
-      <!-- <property name="porter-password">MrNNrtfaFqSd</property> -->
+      <property name="type">slave</property>
+      <property name="porter-username">vPvfMfnCIsBJ</property>
+      <property name="porter-socket-path">flu-zeJANS.socket</property>
+      <property name="porter-password">MrNNrtfaFqSd</property>
       <clock-master>false</clock-master>
       <plugs>
       </plugs>
