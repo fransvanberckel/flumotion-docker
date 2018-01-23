@@ -15,9 +15,8 @@ script:
   - docker tag $DOCKER_REPO:worker $DOCKER_REPO:worker-$TRAVIS_BUILD_NUMBER
   - docker build -t $DOCKER_REPO:admin admin/
   - docker tag $DOCKER_REPO:admin $DOCKER_REPO:admin-$TRAVIS_BUILD_NUMBER
-
-after_success:
-  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+  ### push to docker-hub
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS
   - docker push $DOCKER_REPO:base-$TRAVIS_BUILD_NUMBER
   - docker push $DOCKER_REPO:base
   - docker push $DOCKER_REPO:manager-$TRAVIS_BUILD_NUMBER
