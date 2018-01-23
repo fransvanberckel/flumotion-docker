@@ -7,6 +7,12 @@ env:
     - DOCKER_REPO=spreadspace/flumotion
 
 script:
+  ### pull current images to potentially use docker build cache
+  - docker pull $DOCKER_REPO:base
+  - docker pull $DOCKER_REPO:manager
+  - docker pull $DOCKER_REPO:worker
+  - docker pull $DOCKER_REPO:admin
+  ### build the new images
   - docker build -t $DOCKER_REPO:base .
   - docker tag $DOCKER_REPO:base $DOCKER_REPO:base-$TRAVIS_BUILD_NUMBER
   - docker build -t $DOCKER_REPO:manager manager/
