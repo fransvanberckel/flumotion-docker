@@ -1,4 +1,4 @@
-FROM spreadspace/flumotion:latest
+FROM spreadspace/flumotion:base
 MAINTAINER Christian Pointner <equinox@spreadspace.org>
 
 USER root
