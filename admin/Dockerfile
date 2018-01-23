@@ -3,7 +3,7 @@ MAINTAINER Christian Pointner <equinox@spreadspace.org>
 
 USER root
 
-RUN adduser --home /home/user --uid 1000 --disabled-password --gecos "interactive user" user
+RUN adduser --home /srv --no-create-home --system --uid 1000 --group admin
 
-USER user
+USER admin
 CMD ["admin"]
