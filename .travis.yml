@@ -7,22 +7,22 @@ env:
     - DOCKER_REPO=spreadspace/flumotion
 
 script:
-  - docker build -f Dockerfile -t $REPO:base .
-  - docker tag $REPO:base $REPO:base-$TRAVIS_BUILD_NUMBER
-  - docker build -f Dockerfile -t $REPO:manager manager/
-  - docker tag $REPO:manger $REPO:manager-$TRAVIS_BUILD_NUMBER
-  - docker build -f Dockerfile -t $REPO:worker worker/
-  - docker tag $REPO:worker $REPO:worker-$TRAVIS_BUILD_NUMBER
-  - docker build -f Dockerfile -t $REPO:admin admin/
-  - docker tag $REPO:admin $REPO:admin-$TRAVIS_BUILD_NUMBER
+  - docker build -f Dockerfile -t $DOCKER_REPO:base .
+  - docker tag $DOCKER_REPO:base $DOCKER_REPO:base-$TRAVIS_BUILD_NUMBER
+  - docker build -f Dockerfile -t $DOCKER_REPO:manager manager/
+  - docker tag $DOCKER_REPO:manger $DOCKER_REPO:manager-$TRAVIS_BUILD_NUMBER
+  - docker build -f Dockerfile -t $DOCKER_REPO:worker worker/
+  - docker tag $DOCKER_REPO:worker $DOCKER_REPO:worker-$TRAVIS_BUILD_NUMBER
+  - docker build -f Dockerfile -t $DOCKER_REPO:admin admin/
+  - docker tag $DOCKER_REPO:admin $DOCKER_REPO:admin-$TRAVIS_BUILD_NUMBER
 
 after_success:
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-  - docker push $REPO:base-$TRAVIS_BUILD_NUMBER
-  - docker push $REPO:base
-  - docker push $REPO:manager-$TRAVIS_BUILD_NUMBER
-  - docker push $REPO:manager
-  - docker push $REPO:worker-$TRAVIS_BUILD_NUMBER
-  - docker push $REPO:worker
-  - docker push $REPO:admin-$TRAVIS_BUILD_NUMBER
-  - docker push $REPO:admin
+  - docker push $DOCKER_REPO:base-$TRAVIS_BUILD_NUMBER
+  - docker push $DOCKER_REPO:base
+  - docker push $DOCKER_REPO:manager-$TRAVIS_BUILD_NUMBER
+  - docker push $DOCKER_REPO:manager
+  - docker push $DOCKER_REPO:worker-$TRAVIS_BUILD_NUMBER
+  - docker push $DOCKER_REPO:worker
+  - docker push $DOCKER_REPO:admin-$TRAVIS_BUILD_NUMBER
+  - docker push $DOCKER_REPO:admin
