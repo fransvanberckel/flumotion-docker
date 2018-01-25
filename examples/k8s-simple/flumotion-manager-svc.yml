@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: test
+  name: flumotion-manager
+  labels:
+    app: flumotion
+    type: manager
+spec:
+  selector:
+    app: flumotion
+    type: manager
+  clusterIP: 172.18.208.31
+  ports:
+  - name: ssl
+    port: 7531
+    protocol: TCP
+  - name: plain
+    port: 8642
+    protocol: TCP

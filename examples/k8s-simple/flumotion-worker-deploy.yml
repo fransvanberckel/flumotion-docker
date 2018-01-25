@@ -1,0 +1,62 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  namespace: test
+  name: flumotion-worker-default
+  labels:
+    app: flumotion
+    type: worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flumotion
+      type: worker
+  strategy:
+    type: Recreate
+  revisionHistoryLimit: 5
+  template:
+    metadata:
+      labels:
+        app: flumotion
+        type: worker
+    spec:
+      nodeName: dione
+      containers:
+      - name: flumotion
+        image: spreadspace/flumotion:worker
+        imagePullPolicy: Always
+        args:
+        - worker
+        - --verbose
+        - -H flumotion-manager
+        - -P 8642
+        - -T tcp
+        - -n default
+        - -u user
+        - -p test
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: home
+          mountPath: /srv
+        - name: decklink-devices
+          mountPath: /dev/blackmagic
+        - name: decklink-libs
+          subPath: libDeckLinkAPI.so
+          mountPath: /usr/lib/libDeckLinkAPI.so
+        - name: decklink-libs
+          subPath: libDeckLinkPreviewAPI.so
+          mountPath: /usr/lib/libDeckLinkPreviewAPI.so
+      volumes:
+      - name: home
+        emptyDir:
+          medium: Memory
+      - name: decklink-devices
+        hostPath:
+          type: Directory
+          path: /dev/blackmagic
+      - name: decklink-libs
+        hostPath:
+          type: Directory
+          path: /usr/lib/

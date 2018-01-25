@@ -1,0 +1,44 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  namespace: test
+  name: flumotion-manager
+  labels:
+    app: flumotion
+    type: manager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flumotion
+      type: manager
+  strategy:
+    type: Recreate
+  revisionHistoryLimit: 5
+  template:
+    metadata:
+      labels:
+        app: flumotion
+        type: manager
+    spec:
+      nodeName: dione
+      containers:
+      - name: flumotion
+        image: spreadspace/flumotion:manager
+        imagePullPolicy: Always
+        args:
+        - manager
+        - --verbose
+        - /etc/flumotion/planet.xml
+        volumeMounts:
+        - name: home
+          mountPath: /srv
+        - name: planet-config
+          mountPath: /etc/flumotion
+      volumes:
+      - name: home
+        emptyDir:
+          medium: Memory
+      - name: planet-config
+        configMap:
+          name: flumotion-manager
