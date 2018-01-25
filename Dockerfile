@@ -9,7 +9,7 @@ RUN set -x \
     && echo 'APT::Install-Suggests "false";' >> /etc/apt/apt.conf.d/02no-recommends \
     && apt-key add /root/spreadspace-build.asc \
     && apt-get update -q \
-    && apt-get install -y -q tzdata flumotion flumotion-decklink gstreamer-tools \
+    && apt-get install -y -q tzdata flumotion flumotion-decklink gstreamer-tools gstreamer0.10-plugins-ugly \
     && apt-get upgrade -y -q \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
