@@ -1,8 +1,6 @@
 #!/bin/bash
 
-CMD="$1"
-shift
-
+CMD=${FLUMOTION_COMMAND}
 if [ -z "$CMD" ]; then
   exec /bin/bash
 fi

@@ -1,4 +1,4 @@
 FROM spreadspace/flumotion:base
 MAINTAINER Christian Pointner <equinox@spreadspace.org>
 
-CMD ["worker"]
+ENV FLUMOTION_COMMAND worker
